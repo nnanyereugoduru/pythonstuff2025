@@ -7,6 +7,7 @@ Projects
 - Student Roster System
 - Hangman
 - World Cup 2026 Data Analysis
+- expense tracker version 1
 
 Skills Practiced
 Python, Pandas, Matplotlib, JSON, CSV, File I/O, Dictionaries, OOP basics
