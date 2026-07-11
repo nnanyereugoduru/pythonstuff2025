@@ -16,6 +16,7 @@ cursor.execute('''
         name TEXT,
         nationality TEXT,
         goals INTEGER
+        
     )
 ''')
 
@@ -50,11 +51,29 @@ row = cursor.fetchall()
 for row in row:
     print(row)
 
-cursor.execute('SELECT * FROM players LIMIT 3')
+cursor.execute('SELECT * FROM players ORDER BY goals DESC LIMIT 3')
 row = cursor.fetchall()
 for row in row:
     print(row)
 
+
+cursor.execute('''
+    SELECT nationality, SUM(goals) as total_goals
+    FROM players
+    GROUP BY nationality
+    ORDER BY total_goals DESC
+ ''')
+rows = cursor.fetchall()
+for row in rows:
+    print(f'{row[0]} : {row[1]} goals')
+
+cursor.execute('SELECT COUNT(*) FROM players')
+result = cursor.fetchone()
+print(f'total players are {result[0]}')
+
+cursor.execute('SELECT AVG(goals) FROM players')
+result = cursor.fetchone()
+print(f'average goal is {result[0]:.2f}')
 
 
 
