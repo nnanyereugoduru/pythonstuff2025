@@ -1,25 +1,22 @@
 import random
 
-def get_random_number():
-    return random.randint(1,100)
-
-a = get_random_number()
-
+a = random.randint(1,100)
 count = 0
+
 while True:
-    count += 1
     try:
-        user_input = input("Enter a random number ")
-        user_number = int(user_input)
+        user_input = int(input("Enter a random number "))
+        count += 1
         
-        if user_number > a:
+        if user_input > a:
             print("too high")
-        elif user_number == a:
+        elif user_input == a:
             print("thats right")
-            print("got it in " + str(count) + " times ")
+            print(f'got it in {count} {'guess' if count == 1 else 'guesses'}')
             break
         else:
             print("too low")
+
     except ValueError:
         print("Please enter a valid number")
         
